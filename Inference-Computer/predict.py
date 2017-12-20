@@ -12,6 +12,7 @@ options = {"model": "cfg/yolo-voc.cfg", "load": "bin/yolo-voc.weights", "thresho
 tfnet = TFNet(options)
 
 birdsSeen = 0
+catsSeen = 0
 def handleBird():
     pass
 
@@ -29,5 +30,11 @@ while True:
             print("bird detected")
             birdsSeen += 1
             curr_img.save('birds/%i.jpg' % birdsSeen)
+        elif detection['label'] == 'cat':
+            print("cat detected")
+            catsSeen += 1
+            curr_img.save('cats/%i.jpg' % catsSeen)
+        else:
+            print(detection['label'] + " detected")
     print('running again')
     time.sleep(4)
