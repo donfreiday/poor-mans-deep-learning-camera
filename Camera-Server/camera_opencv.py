@@ -13,7 +13,7 @@ class Camera(BaseCamera):
     @staticmethod
     def frames():
         for x in range(1,10):
-            print("Trying " + x + "/10... "),
+            print("Trying " + str(x) + "/10... "),
             camera = cv2.VideoCapture(Camera.video_source)
             if camera.isOpened():
                 print("Success!")
