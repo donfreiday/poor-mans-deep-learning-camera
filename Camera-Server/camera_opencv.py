@@ -11,11 +11,15 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        camera = cv2.VideoCapture(Camera.video_source)
+        for x in range(1,10):
+            camera = cv2.VideoCapture(Camera.video_source)
+            if camera.isOpened():
+                break
+            time.sleep(2)
+        if !camera.isOpened() :
+            raise RuntimeError('Could not start camera.')
         camera.set(3,1280)
         camera.set(4,720)
-        if not camera.isOpened():
-            raise RuntimeError('Could not start camera.')
 
         while True:
             # read current frame
