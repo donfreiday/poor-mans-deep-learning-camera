@@ -16,7 +16,7 @@ class Camera(BaseCamera):
             if camera.isOpened():
                 break
             time.sleep(2)
-        if !camera.isOpened() :
+        if not camera.isOpened() :
             raise RuntimeError('Could not start camera.')
         camera.set(3,1280)
         camera.set(4,720)
