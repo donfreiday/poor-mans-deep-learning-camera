@@ -36,5 +36,5 @@ while True:
             curr_img.save('cats/%i.jpg' % catsSeen)
         else:
             print(detection['label'] + " detected")
-    print('running again')
+    print ('.'),
     time.sleep(4)
