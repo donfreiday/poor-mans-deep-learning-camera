@@ -17,7 +17,7 @@ def handleBird():
     pass
 
 while True:
-    r = requests.get('http://rpi.home:5000/image.jpg') # replace with your ip address
+    r = requests.get('http://192.168.1.71:5000/image.jpg') # replace with your ip address
     curr_img = Image.open(BytesIO(r.content))
     curr_img_cv2 = cv2.cvtColor(np.array(curr_img), cv2.COLOR_RGB2BGR)
 
