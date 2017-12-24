@@ -7,7 +7,7 @@ import requests
 from PIL import Image
 import numpy as np
 
-options = {"model": "cfg/yolo-voc.cfg", "load": "bin/yolo-voc.weights", "threshold": 0.2}
+options = {"model": "cfg/yolo-voc.cfg", "load": "bin/yolo-voc.weights", "threshold": 0.3}
 
 tfnet = TFNet(options)
 
@@ -36,5 +36,4 @@ while True:
             curr_img.save('cats/%i.jpg' % catsSeen)
         else:
             print(detection['label'] + " detected")
-    print ('.'),
-    time.sleep(4)
+    time.sleep(3)
