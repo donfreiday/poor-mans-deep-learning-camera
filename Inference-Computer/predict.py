@@ -25,9 +25,7 @@ while True:
     result = tfnet.return_predict(curr_img_cv2)
     for detection in result:
         print(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + detection['label'] + " detected")
-        if detection['label'] == 'bird':
-            curr_img.save('birds/%s.jpg' % datetime.now().strftime('%Y-%m-%d %H.%M.%S'))
-        elif detection['label'] == 'cat':
-            curr_img.save('cats/%s.jpg' % datetime.now().strftime('%Y-%m-%d %H.%M.%S'))
+        if detection['label'] == 'bird' or detection['label'] == 'cat' or detection['label'] == 'person':
+            curr_img.save('{0}s/{1}.jpg'.format(detection['label'], datetime.now().strftime('%Y-%m-%d %H.%M.%S')))
 
     time.sleep(3)
