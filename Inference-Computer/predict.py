@@ -26,6 +26,6 @@ while True:
     for detection in result:
         print(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + detection['label'] + " detected")
         if detection['label'] == 'bird' or detection['label'] == 'cat' or detection['label'] == 'person':
-            curr_img.save('{0}s/{1}.jpg'.format(detection['label'], datetime.now().strftime('%Y-%m-%d %H.%M.%S')))
+            curr_img.save('{0}/{1}.jpg'.format(detection['label'], datetime.now().strftime('%Y-%m-%d %H.%M.%S')))
 
     time.sleep(3)
