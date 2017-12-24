@@ -1,5 +1,6 @@
 from darkflow.net.build import TFNet
 import cv2
+from datetime import datetime
 
 from io import BytesIO
 import time
@@ -7,12 +8,10 @@ import requests
 from PIL import Image
 import numpy as np
 
-options = {"model": "cfg/yolo-voc.cfg", "load": "bin/yolo-voc.weights", "threshold": 0.3}
+options = {"model": "cfg/yolo-voc.cfg", "load": "bin/yolo-voc.weights", "threshold": 0.1}
 
 tfnet = TFNet(options)
 
-birdsSeen = 0
-catsSeen = 0
 def handleBird():
     pass
 
@@ -24,16 +23,11 @@ while True:
     # uncomment below to try your own image
     #imgcv = cv2.imread('./sample/bird.png')
     result = tfnet.return_predict(curr_img_cv2)
-    #print(result)
     for detection in result:
+        print(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + detection['label'] + " detected")
         if detection['label'] == 'bird':
-            print("bird detected")
-            birdsSeen += 1
-            curr_img.save('birds/%i.jpg' % birdsSeen)
+            curr_img.save('birds/%s.jpg' % datetime.now().strftime('%Y-%m-%d %H.%M.%S'))
         elif detection['label'] == 'cat':
-            print("cat detected")
-            catsSeen += 1
-            curr_img.save('cats/%i.jpg' % catsSeen)
-        else:
-            print(detection['label'] + " detected")
+            curr_img.save('cats/%s.jpg' % datetime.now().strftime('%Y-%m-%d %H.%M.%S'))
+
     time.sleep(3)
